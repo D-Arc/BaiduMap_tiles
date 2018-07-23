@@ -7,6 +7,20 @@
 更改 `download_tiles.py` 文件中的区域(lat_和lon_)和缩放(zoom).
 
 ```py
+"""
+    说明：
+    1、akey若无法使用，请在gmap_utils.py文件中修改自己的akey
+
+    2、本文件为下载的入口，其中函数download_tile、download_satellite里定义的的链接地址中的参数
+    udt需要修改为最新版本的时间字符串，例如"20180628"，
+
+    3、时间字符串获取方法：
+    浏览器访问：http://api.map.baidu.com/api?v=2.0，获取到js中document.write中的script标签的src，
+    再浏览器访问该src，获取返回的js脚本中全局变量TILE_VERSION对象中的'updateDate'属性即可，一般在第一行就能找到
+
+    4、服务端替换离线瓦片资源时，不要忘记修改离线BaiduApi_2.0.js文件设置或者js中的window.__BMAP_EXTRA_CONFIG__
+    中的各种Udt参数，要与图片的udt保持一致
+"""
 zoom = 8
 
 lat_start, lon_start = 31.717714,105.540665
